@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/2044c6de59.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="src/style.css">
     <title>To-do List</title>
 </head>
 <body>
+    <div class="container-md">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control top-shop-item" placeholder="What do you want to buy?" aria-label="What do you want to buy?" aria-describedby="button-add">
+            <button class="btn btn-outline-secondary" type="button" id="button-add">
+                <i class="far fa-plus-square"></i>
+            </button>
+        </div>
+        <h2>Your Shopping List <i class="fas fa-shopping-basket" style="font-size: 24px;"></i></h2>
+        <h4 id="empty-list-msg" style="color:gray";>its empty, add new items.</h3>
+        <div class="shopping-list">
 
+        </div>
+        
+        
+    </div>
 
     
-    <script src="app.js"></script>
+    <script src="/src/app.js"></script>
 </body>
 </html>
