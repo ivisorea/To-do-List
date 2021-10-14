@@ -5,10 +5,11 @@ addButton.addEventListener('click', () => {
     // hide empty message
     document.getElementById('empty-list-msg').hidden = true;
     let node = document.createElement('div');
-    let itemText = document.querySelector('.top-shop-item').value;
+    let itemInput = document.querySelector('.top-shop-item')
+    // let itemText = itemInput.value;
     node.innerHTML = `
         <div class="input-group justify-content-center">
-            <input type="text" class="form-control" aria-label="Text input" value="${itemText}">
+            <input type="text" class="form-control" aria-label="Text input" value="${itemInput.value}">
             <button class="btn btn-outline-secondary" id="check" type="button">
                 <i class="fas fa-check" style="color:green;"></i>
             </button>
@@ -17,6 +18,7 @@ addButton.addEventListener('click', () => {
             </button>
         </div>`
     document.querySelector('.shopping-list').appendChild(node);
+    itemInput.value = "";
 });        
 
 
