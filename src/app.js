@@ -8,9 +8,7 @@ addButton.addEventListener('click', () => {
     let itemText = document.querySelector('.top-shop-item').value;
     node.innerHTML = `
         <div class="input-group justify-content-center">
-            <div class="input-group-text">
-                <input type="text" class="form-control" aria-label="Text input" value="${itemText}">
-            </div>
+            <input type="text" class="form-control" aria-label="Text input" value="${itemText}">
             <button class="btn btn-outline-secondary" id="check" type="button">
                 <i class="fas fa-check" style="color:green;"></i>
             </button>
@@ -31,9 +29,8 @@ shoppingList.addEventListener('click', checkEdit);
 
 function checkEdit(event) {
     const parent = event.target.parentNode;
-    const checkEditButton = parent.childNodes[3];
-    const input = parent.childNodes[1].childNodes[1];
-//    console.log(input);
+    const checkEditButton = event.target;
+    const input = parent.childNodes[1]
     if(checkEditButton.id === 'check' && input.disabled === false) {
         input.style.textDecoration = 'line-through';
         input.disabled = true;
