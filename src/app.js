@@ -1,4 +1,5 @@
 const addButton = document.getElementById('button-add');
+//console.log(addButton);
 
 addButton.addEventListener('click', () => {
     // hide empty message
@@ -32,7 +33,7 @@ function checkEdit(event) {
     const parent = event.target.parentNode;
     const checkEditButton = parent.childNodes[3];
     const input = parent.childNodes[1].childNodes[1];
-    console.log(input);
+//    console.log(input);
     if(checkEditButton.id === 'check' && input.disabled === false) {
         input.style.textDecoration = 'line-through';
         input.disabled = true;
@@ -45,3 +46,18 @@ function checkEdit(event) {
 };
 
 
+//Delete button function
+
+const listItem = document.querySelector('.shopping-list');
+
+listItem.addEventListener('click', doDelete);
+
+function doDelete(event) {
+    const parent = event.target.parentNode;
+    const deleteButton = event.target;
+    
+    if(deleteButton.id === 'delete') {
+        parent.remove();
+    }
+
+};
