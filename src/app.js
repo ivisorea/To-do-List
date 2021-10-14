@@ -17,6 +17,7 @@ addButton.addEventListener('click', () => {
             </button>
         </div>`
     document.querySelector('.shopping-list').appendChild(node);
+    document.querySelector('.top-shop-item').value = '';
 });        
 
 
