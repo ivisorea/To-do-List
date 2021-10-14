@@ -58,3 +58,17 @@ function doDelete(event) {
     }
 
 };
+
+
+
+//ClearList button function
+
+const clearButton = document.getElementById('button-reset');
+const shpList = document.querySelector('.shopping-list')
+clearButton.addEventListener('click', doClear);
+
+function doClear(event) {
+    if (shpList.childNodes.length>1) {
+        confirm("Are you sure?") ? shpList.innerHTML="" : false;
+    }
+};

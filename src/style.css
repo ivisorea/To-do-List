@@ -1,5 +1,8 @@
 body {
-    background-color: #6fc7bb;
+    /* background-color: #6fc7bb; */
+    background-image:linear-gradient(
+    to right, azure, #6fc7bb, #6fc6aa);
+    padding: 0 3% 3%;
 }
 
 .container-md {
