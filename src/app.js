@@ -60,19 +60,15 @@ function doDelete(event) {
 };
 
 
-//NewList button function
 
-const clearButton = document.getElementById('button-clearList');
-const shoppinglist = document.querySelector('.shopping-list');
+//ClearList button function
 
-listItem.addEventListener('click', doClear);
+const clearButton = document.getElementById('button-reset');
+const shpList = document.querySelector('.shopping-list')
+clearButton.addEventListener('click', doClear);
 
 function doClear(event) {
-    const parent = event.target.parentNode;
-    const deleteButton = event.target;
-    
-    if(deleteButton.id === 'delete') {
-        parent.remove();
+    if (shpList.childNodes.length>1) {
+        confirm("Are you sure?") ? shpList.innerHTML="" : false;
     }
-
 };
