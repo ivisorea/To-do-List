@@ -58,3 +58,21 @@ function doDelete(event) {
     }
 
 };
+
+
+//NewList button function
+
+const clearButton = document.getElementById('button-clearList');
+const shoppinglist = document.querySelector('.shopping-list');
+
+listItem.addEventListener('click', doClear);
+
+function doClear(event) {
+    const parent = event.target.parentNode;
+    const deleteButton = event.target;
+    
+    if(deleteButton.id === 'delete') {
+        parent.remove();
+    }
+
+};
