@@ -18,6 +18,7 @@ addButton.addEventListener('click', () => {
             </button>
         </div>`
     document.querySelector('.shopping-list').appendChild(node);
+    localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
     itemInput.value = "";
 });        
 
@@ -42,6 +43,7 @@ function checkEdit(event) {
         input.style.textDecoration = 'none';
         checkEditButton.innerHTML = '<i class="fas fa-check" style="color:green;"></i>';
     }
+    localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
 };
 
 
@@ -58,7 +60,7 @@ function doDelete(event) {
     if(deleteButton.id === 'delete') {
         parent.remove();
     }
-
+    localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
 };
 
 
@@ -73,4 +75,13 @@ function doClear(event) {
     if (shpList.childNodes.length>1) {
         confirm("Are you sure?") ? shpList.innerHTML="" : false;
     }
+    localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
 };
+
+//Repopulate List
+document.onload(loadList());
+function loadList() {
+    // JSON.parse(localStorage.getItem(formIdentifier)); 
+    document.querySelector('.shopping-list').innerHTML = localStorage.getItem('shopping-list');
+}
+
