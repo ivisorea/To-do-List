@@ -5,11 +5,11 @@ addButton.addEventListener('click', () => {
     // hide empty message
     document.getElementById('empty-list-msg').hidden = true;
     let node = document.createElement('div');
-    let itemInput = document.querySelector('.top-shop-item')
+    let itemInput = document.querySelector('.top-shop-item');
     // let itemText = itemInput.value;
     node.innerHTML = `
         <div class="input-group justify-content-center">
-            <input type="text" class="form-control" aria-label="Text input" value="${itemInput.value}">
+            <input type="text" class="form-control" aria-label="Text-input" value="${itemInput.value}">
             <button class="btn btn-outline-secondary" id="check" type="button">
                 <i class="fas fa-check" style="color:green;"></i>
             </button>
@@ -18,9 +18,11 @@ addButton.addEventListener('click', () => {
             </button>
         </div>`
     document.querySelector('.shopping-list').appendChild(node);
+    
     localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
     itemInput.value = "";
 });        
+
 
 
 //Check button function
@@ -66,22 +68,45 @@ function doDelete(event) {
 
 
 //ClearList button function
-
 const clearButton = document.getElementById('button-reset');
 const shpList = document.querySelector('.shopping-list')
 clearButton.addEventListener('click', doClear);
-
 function doClear(event) {
-    if (shpList.childNodes.length>1) {
-        confirm("Are you sure?") ? shpList.innerHTML="" : false;
+    if (shpList.childNodes.length>0) {
+        if (confirm("Are you sure?")) {
+            shpList.innerHTML="" ;
+            document.getElementById('empty-list-msg').hidden = false;
+            document.querySelector('.top-shop-item').value="";
+        }
     }
     localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
 };
 
 //Repopulate List
-document.onload(loadList());
-function loadList() {
+//document.addEventListener('DOMContentLoaded', loadList());
+window.onload = function(){
     // JSON.parse(localStorage.getItem(formIdentifier)); 
-    document.querySelector('.shopping-list').innerHTML = localStorage.getItem('shopping-list');
+    if (localStorage.getItem('shopping-list') != ""){
+        document.getElementById('empty-list-msg').hidden = true;
+        document.querySelector('.shopping-list').innerHTML = localStorage.getItem('shopping-list');
+    }
 }
 
+
+//OnChange - to save LocalStorage...
+                                                            //"change" - does not update if page refreshed before *leaving* the input 
+document.querySelector(".shopping-list").addEventListener("keyup",(e) => {
+    // console.log(e.target);
+    // this event >> function gets fired..... but changed "value" does not reflect in the object, and so it does not get saved to LocalStorage!
+    
+    e.target.setAttribute("value", e.target.value);
+
+    // optional way
+    // e.target.parentNode.innerHTML = 
+    // `<input type="text" class="form-control" aria-label="Text input" value="${e.target.value}" id="inputID"><button class="btn btn-outline-secondary" id="check" type="button"><i class="fas fa-check" style="color:green;"></i></button><button class="btn btn-outline-secondary" id="delete" type="button"><i class="far fa-trash-alt" style="color:red;"></i></button>`;
+    localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
+});
+//window.onbeforeunload = function(event) { ... };
+// window.onbeforeunload = function(e){
+//     localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
+// }
