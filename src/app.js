@@ -94,9 +94,14 @@ window.onload = function(){
 
 
 //OnChange - to save LocalStorage...
-document.querySelector(".shopping-list").addEventListener("change",(e) => {
-    console.log(e.target);
+//document.querySelector(".shopping-list").addEventListener("change",(e) => {
+  //  console.log(e.target);
     // this event & function gets fired..... but changed "value" does not reflect in object, and so it does not get saved.
+
+    document.querySelector(".shopping-list").addEventListener("change",(e) => {
+        e.target.parentNode.innerHTML = 
+        `<input type="text" class="form-control" aria-label="Text input" value="${e.target.value}" id="inputID"><button class="btn btn-outline-secondary" id="check" type="button"><i class="fas fa-check" style="color:green;"></i></button><button class="btn btn-outline-secondary" id="delete" type="button"><i class="far fa-trash-alt" style="color:red;"></i></button>`;
+
     localStorage.setItem('shopping-list', document.querySelector('.shopping-list').innerHTML);
 });
 //window.onbeforeunload = function(event) { ... };
